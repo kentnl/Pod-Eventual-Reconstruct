@@ -53,6 +53,10 @@ use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
 
+=attr write_handle
+
+=cut
+
 has write_handle => ( is => ro =>, required => 1 );
 
 =method string_writer
@@ -65,6 +69,7 @@ Create a reconstructor that writes to a string
 
 =cut
 
+## no critic (RequireArgUnpacking,RequireBriefOpen)
 sub string_writer {
   my $class = $_[0];
   my $string_write;
@@ -73,7 +78,7 @@ sub string_writer {
     $string_write = \$_[1];
   }
   elsif ( ref $_[1] ne 'SCALAR' ) {
-    die '->string_writer( string ) must be a scalar or scalar ref';
+    croak '->string_writer( string ) must be a scalar or scalar ref';
   }
   else {
     $string_write = $_[1];
@@ -81,6 +86,7 @@ sub string_writer {
   open my $fh, '>', $string_write;
   return $class->handle_writer( $fh, $_[2] );
 }
+## use critic
 
 =method file_writer
 
@@ -114,7 +120,7 @@ sub file_writer_raw {
 
 =method file_writer_utf8
 
-Create a reconstructor that writes to a file in utf8 mode
+Create a reconstructor that writes to a file in C<utf8> mode
 
     my $reconstructor = ::Reconstruct->file_writer_utf8( $file_name )
 
@@ -129,7 +135,7 @@ sub file_writer_utf8 {
 
 =method handle_writer
 
-Create a reconstructor that writes to a filehandle
+Create a reconstructor that writes to a file handle
 
     my $reconstructor = ::Reconstruct->handle_writer( $handle )
 
@@ -177,10 +183,10 @@ sub write_command {
     croak('write_command cant write anything but nonpod');
   }
   my $content = $event->{content};
-  if ( $content !~ /^\s+$/ ) {
-    $content = " " . $content;
+  if ( $content !~ qr{ ^ \s+ $ }msx ) {
+    $content = q[ ] . $content;
   }
-  $self->write_handle->printf( qq{=%s%s}, $event->{command}, $content );
+  $self->write_handle->printf( q{=%s%s}, $event->{command}, $content );
 
   #if ( $event->{command} ne 'cut' ){
   #    $self->write_handle->printf(qq{\n});

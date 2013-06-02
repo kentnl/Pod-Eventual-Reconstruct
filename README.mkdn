@@ -62,7 +62,7 @@ Values of `Path::Tiny` or `Path::Class` should also work as values of `$file_nam
 
 ## file\_writer\_utf8
 
-Create a reconstructor that writes to a file in utf8 mode
+Create a reconstructor that writes to a file in `utf8` mode
 
     my $reconstructor = ::Reconstruct->file_writer_utf8( $file_name )
 
@@ -70,7 +70,7 @@ Values of `Path::Tiny` or `Path::Class` should also work as values of `$file_nam
 
 ## handle\_writer
 
-Create a reconstructor that writes to a filehandle
+Create a reconstructor that writes to a file handle
 
     my $reconstructor = ::Reconstruct->handle_writer( $handle )
 
@@ -115,6 +115,10 @@ Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `blank`
 `$event->{type}` __MUST__ be `eq 'blank'`
 
     $recon->write_blank({ type => 'blank', ... });
+
+# ATTRIBUTES
+
+## write\_handle
 
 {
     "namespace":"Pod::Eventual::Reconstruct",
