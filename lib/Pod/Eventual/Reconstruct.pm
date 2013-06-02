@@ -21,9 +21,8 @@ use Carp qw( croak );
 has write_handle => ( is => ro =>, required => 1 );
 
 
-
+## no critic (RequireArgUnpacking,RequireBriefOpen)
 sub string_writer {
-  ## no critic (RequireArgUnpacking,RequireBriefOpen)
   my $class = $_[0];
   my $string_write;
 
@@ -39,6 +38,7 @@ sub string_writer {
   open my $fh, '>', $string_write;
   return $class->handle_writer( $fh, $_[2] );
 }
+## use critic
 
 
 sub file_writer {
