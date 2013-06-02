@@ -70,6 +70,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/Pod-Eventual-Reconstruct/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/Pod-Eventual-Reconstruct",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/Pod-Eventual-Reconstruct.git",
+         "web" : "https://github.com/kentfredric/Pod-Eventual-Reconstruct"
+      }
+   },
    "version" : "0.1.0",
    "x_BuiltWith" : {
       "modules" : {
