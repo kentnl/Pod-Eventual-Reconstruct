@@ -82,9 +82,9 @@ sub write_command {
   }
   my $content = $event->{content};
   if ( $content !~ qr{ ^ \s+ $ }msx ) {
-    $content = " " . $content;
+    $content = q[ ] . $content;
   }
-  $self->write_handle->printf( qq{=%s%s}, $event->{command}, $content );
+  $self->write_handle->printf( q{=%s%s}, $event->{command}, $content );
 
   #if ( $event->{command} ne 'cut' ){
   #    $self->write_handle->printf(qq{\n});
