@@ -24,7 +24,7 @@ use utf8;
 
     =end indented is a comment
 
-=end
+=end comment
 
 =cut
 

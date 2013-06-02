@@ -21,7 +21,9 @@ use Carp qw( croak );
 has write_handle => ( is => ro =>, required => 1 );
 
 
+
 sub string_writer {
+  ## no critic (RequireArgUnpacking,RequireBriefOpen)
   my $class = $_[0];
   my $string_write;
 
@@ -29,7 +31,7 @@ sub string_writer {
     $string_write = \$_[1];
   }
   elsif ( ref $_[1] ne 'SCALAR' ) {
-    die '->string_writer( string ) must be a scalar or scalar ref';
+    croak '->string_writer( string ) must be a scalar or scalar ref';
   }
   else {
     $string_write = $_[1];
@@ -79,7 +81,7 @@ sub write_command {
     croak('write_command cant write anything but nonpod');
   }
   my $content = $event->{content};
-  if ( $content !~ /^\s+$/ ) {
+  if ( $content !~ qr{ ^ \s+ $ }msx ) {
     $content = " " . $content;
   }
   $self->write_handle->printf( qq{=%s%s}, $event->{command}, $content );
@@ -195,7 +197,7 @@ Values of C<Path::Tiny> or C<Path::Class> should also work as values of C<$file_
 
 =head2 file_writer_utf8
 
-Create a reconstructor that writes to a file in utf8 mode
+Create a reconstructor that writes to a file in C<utf8> mode
 
     my $reconstructor = ::Reconstruct->file_writer_utf8( $file_name )
 
@@ -203,7 +205,7 @@ Values of C<Path::Tiny> or C<Path::Class> should also work as values of C<$file_
 
 =head2 handle_writer
 
-Create a reconstructor that writes to a filehandle
+Create a reconstructor that writes to a file handle
 
     my $reconstructor = ::Reconstruct->handle_writer( $handle )
 

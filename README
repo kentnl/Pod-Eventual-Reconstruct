@@ -57,7 +57,7 @@ METHODS
     $file_name
 
   file_writer_utf8
-    Create a reconstructor that writes to a file in utf8 mode
+    Create a reconstructor that writes to a file in "utf8" mode
 
         my $reconstructor = ::Reconstruct->file_writer_utf8( $file_name )
 
@@ -65,7 +65,7 @@ METHODS
     $file_name
 
   handle_writer
-    Create a reconstructor that writes to a filehandle
+    Create a reconstructor that writes to a file handle
 
         my $reconstructor = ::Reconstruct->handle_writer( $handle )
 
