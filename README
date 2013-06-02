@@ -107,6 +107,8 @@ METHODS
 
         $recon->write_blank({ type => 'blank', ... });
 
+ATTRIBUTES
+  write_handle
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>
 

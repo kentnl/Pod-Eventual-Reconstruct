@@ -18,6 +18,7 @@ use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
 
+
 has write_handle => ( is => ro =>, required => 1 );
 
 
@@ -250,6 +251,10 @@ Write a  L<< C<Pod::Eventual>|Pod::Eventual >> C<blank> event.
 C<< $event->{type} >> B<MUST> be C<eq 'blank'>
 
     $recon->write_blank({ type => 'blank', ... });
+
+=head1 ATTRIBUTES
+
+=head2 write_handle
 
 =begin MetaPOD::JSON v1.0.0
 
