@@ -50,16 +50,16 @@ around write_command => sub {
 
 
 sub write_text_outside_pod {
-    my ( $self, $orig, $event ) = @_ ;
-    carp 'POD Text element outside POD ' . pp($event);
-    return $self->$orig($event);
+  my ( $self, $orig, $event ) = @_;
+  carp 'POD Text element outside POD ' . pp($event);
+  return $self->$orig($event);
 }
 
 
 sub write_nonpod_inside_pod {
-    my ( $self, $orig, $event ) = @_;
-    carp 'NONPOD element inside POD ' . pp($event);
-    return $self->$orig($event);
+  my ( $self, $orig, $event ) = @_;
+  carp 'NONPOD element inside POD ' . pp($event);
+  return $self->$orig($event);
 }
 
 around write_text => sub {

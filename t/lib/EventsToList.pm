@@ -24,12 +24,12 @@ sub handle_event {
 
 sub handle_blank {
   my ( $self, $event ) = @_;
-  push @$output,$event;
+  push @$output, $event;
 }
 
 sub handle_nonpod {
   my ( $self, $event ) = @_;
-  push @$output,$event;
+  push @$output, $event;
 }
 
 1;
