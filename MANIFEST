@@ -12,7 +12,7 @@ corpus/grep/output/01-sample.txt
 corpus/grep2/diff/01-sample.txt.diff
 corpus/grep2/input/01-sample.txt
 corpus/grep2/output/01-sample.txt
-corpus/reconstruct/01-sample.pl
+corpus/reconstruct/01-sample.txt
 dist.ini
 lib/Pod/Eventual/Reconstruct.pm
 lib/Pod/Eventual/Reconstruct/LazyCut.pm
