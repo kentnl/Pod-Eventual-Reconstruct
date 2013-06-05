@@ -141,16 +141,16 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 
 =back
 
-The specific behaviour occurred when hitting these errors can be customised via subclassing,
+The specific behaviour occurred when hitting these errors can be customised via sub-classing,
 and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =head1 METHODS
 
-=head2 set_inpod
+=head2 C<set_inpod>
 
-=head2 clear_inpod
+=head2 C<clear_inpod>
 
-=head2 is_inpod
+=head2 C<is_inpod>
 
 =head2 write_text_outside_pod
 
@@ -174,7 +174,7 @@ Default implementation warns via C<Carp> and then emits the element anyway, via
 
 =head1 ATTRIBUTES
 
-=head2 inpod
+=head2 C<inpod>
 
 =begin MetaPOD::JSON v1.0.0
 
