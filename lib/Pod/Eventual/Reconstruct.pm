@@ -6,7 +6,7 @@ BEGIN {
   $Pod::Eventual::Reconstruct::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Pod::Eventual::Reconstruct::VERSION = '0.1.0';
+  $Pod::Eventual::Reconstruct::VERSION = '0.1.1';
 }
 
 # ABSTRACT: Construct a document from Pod::Eventual events
@@ -140,7 +140,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 =head1 VERSION
 
-version 0.1.0
+version 0.1.1
 
 =head1 SYNOPSIS
 
