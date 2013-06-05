@@ -1,5 +1,11 @@
 Release history for Pod-Eventual-Reconstruct
 
+0.1.2 2013-06-05T19:09:26Z
+ - Tests refactored to use Test::Differences
+
+ [Dependencies::Added / test requires]
+ - Test::Differences
+
 0.1.1 2013-06-05T16:55:26Z
  [!Noteworthy Changes]
  - Added LazyCut subclass for easier POD Filtering
