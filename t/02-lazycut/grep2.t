@@ -5,6 +5,7 @@ use Test::More;
 use FindBin;
 use Path::Tiny qw( path );
 use Test::Fatal;
+use Test::Differences qw( eq_or_diff_text );
 
 my $corpus  = path($FindBin::Bin)->parent->parent->child('corpus')->child('grep2');
 my $in_dir  = $corpus->child('input');
@@ -12,7 +13,6 @@ my $out_dir = $corpus->child('output');
 
 use lib path($FindBin::Bin)->parent->child('lib')->stringify;
 
-use LinesMatch;
 use EventsToList;
 use Pod::Eventual::Reconstruct::LazyCut;
 
@@ -48,9 +48,6 @@ for my $file ( $in_dir->children() ) {
   my $er = LazyCutConstructor->string_writer($output);
   $er->write_event($_) for @{$elements_out};
 
-  LinesMatch::lines_match(
-    "$fn generated" => $output,
-    "$fn expected"  => $expected
-  );
+  eq_or_diff_text( $output, $expected, "$fn stripped as expected" );
 }
 done_testing;
