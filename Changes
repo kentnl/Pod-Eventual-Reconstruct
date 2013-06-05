@@ -1,6 +1,10 @@
 Release history for Pod-Eventual-Reconstruct
 
-0.1.2 2013-06-05T19:06:15Z
+0.1.2 2013-06-05T19:08:04Z
+ - Tests refactored to use Test::Differences
+
+ [Dependencies::Added / test requires]
+ - Test::Differences
 
 0.1.1 2013-06-05T16:55:26Z
  [!Noteworthy Changes]
