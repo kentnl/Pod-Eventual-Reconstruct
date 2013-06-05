@@ -32,7 +32,7 @@ However, if you simply remove the elements before the C<=cut>, the semantics cha
 
     codehere
 
-Here, C<=cut> marks a "Start of POD" and the second C<codehere> is deemed "in the POD". 
+Here, C<=cut> marks a "Start of POD" and the second C<codehere> is deemed "in the POD".
 
 This submodule attempts to keep the document "consistent" by not emitting C<=cut> unless a preceeding C<=command> is seen in the output.
 
@@ -45,6 +45,9 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 =item * A NonPod element inside a POD region
 
 =back
+
+The specific behaviour occurred when hitting these errors can be customised via subclassing,
+and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =cut
 
@@ -60,6 +63,8 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 =cut
 
 use Moo;
+use Carp qw(carp);
+use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
 
 has 'inpod' => (
@@ -91,13 +96,25 @@ around write_command => sub {
   return $self;
 };
 
+sub write_text_outside_pod {
+    my ( $self, $orig, $event ) = @_ ;
+    carp 'POD Text element outside POD ' . pp($event);
+    return $self->$orig($event);
+}
+
+sub write_nonpod_inside_pod {
+    my ( $self, $orig, $event ) = @_;
+    carp 'NONPOD element inside POD ' . pp($event);
+    return $self->$orig($event);
+}
+
 around write_text => sub {
   my ( $orig, $self, $event ) = @_;
   if ( $event->{type} ne 'text' ) {
     return $self->$orig($event);
   }
   if ( not $self->is_inpod ) {
-    warn "POD Text element outside POD";
+    return $self->write_text_outside_pod( $orig, $event );
   }
   return $self->$orig($event);
 };
@@ -108,7 +125,7 @@ around write_nonpod => sub {
     return $self->$orig($event);
   }
   if ( $self->is_inpod ) {
-    warn "NONPOD element inside POD";
+    return $self->write_nonpod_inside_pod( $orig, $event );
   }
   return $self->$orig($event);
 };
