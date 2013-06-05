@@ -6,9 +6,10 @@ use FindBin;
 use Path::Tiny qw( path );
 use Test::Fatal;
 
-my $corpus = path($FindBin::Bin)->parent->child('corpus');
+my $corpus = path($FindBin::Bin)->parent->parent->child('corpus');
 
-use lib path($FindBin::Bin)->child('lib')->stringify;
+use lib path($FindBin::Bin)->parent->child('lib')->stringify;
+
 use LinesMatch;
 use EventPipe;
 
