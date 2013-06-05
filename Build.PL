@@ -17,13 +17,14 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Pod-Eventual-Reconstruct",
-  "dist_version" => "0.1.0",
+  "dist_version" => "0.1.1",
   "license" => "perl",
   "module_name" => "Pod::Eventual::Reconstruct",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Carp" => 0,
+    "Data::Dump" => 0,
     "Moo" => 0,
     "Path::Tiny" => 0,
     "autodie" => 0,

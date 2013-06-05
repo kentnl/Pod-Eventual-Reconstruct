@@ -44,6 +44,7 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
+            "Data::Dump" : "0",
             "Moo" : "0",
             "Path::Tiny" : "0",
             "autodie" : "0",
@@ -66,7 +67,11 @@
    "provides" : {
       "Pod::Eventual::Reconstruct" : {
          "file" : "lib/Pod/Eventual/Reconstruct.pm",
-         "version" : "v0.1.0"
+         "version" : "v0.1.1"
+      },
+      "Pod::Eventual::Reconstruct::LazyCut" : {
+         "file" : "lib/Pod/Eventual/Reconstruct/LazyCut.pm",
+         "version" : "v0.1.1"
       }
    },
    "release_status" : "stable",
@@ -81,10 +86,11 @@
          "web" : "https://github.com/kentfredric/Pod-Eventual-Reconstruct"
       }
    },
-   "version" : "0.1.0",
+   "version" : "0.1.1",
    "x_BuiltWith" : {
       "modules" : {
          "Carp" : "1.29",
+         "Data::Dump" : "1.22",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.7.3",
          "Dist::Zilla::PluginBundle::Author::KENTNL::Lite" : "NA(possibly not installed)",
          "File::Find" : "1.23",

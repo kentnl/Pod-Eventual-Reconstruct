@@ -1,5 +1,12 @@
 Release history for Pod-Eventual-Reconstruct
 
+0.1.1 2013-06-05T16:55:26Z
+ [!Noteworthy Changes]
+ - Added LazyCut subclass for easier POD Filtering
+
+ [Dependencies::Added / runtime requires]
+ - Data::Dump
+
 0.1.0 2013-06-02T09:56:48Z
  - First version.
 
