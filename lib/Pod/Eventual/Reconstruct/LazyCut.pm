@@ -34,7 +34,7 @@ However, if you simply remove the elements before the C<=cut>, the semantics cha
 
 Here, C<=cut> marks a "Start of POD" and the second C<codehere> is deemed "in the POD".
 
-This submodule attempts to keep the document "consistent" by not emitting C<=cut> unless a preceeding C<=command> is seen in the output.
+This module attempts to keep the document "consistent" by not emitting C<=cut> unless a preceding C<=command> is seen in the output.
 
 Additionally, this module will warn if elements are posted to it in ways that are likely to cause errors, for instance:
 
@@ -42,11 +42,11 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 
 =item * A POD Text element outside a POD region
 
-=item * A NonPod element inside a POD region
+=item * A Non-POD element inside a POD region
 
 =back
 
-The specific behaviour occurred when hitting these errors can be customised via subclassing,
+The specific behaviour occurred when hitting these errors can be customised via sub-classing,
 and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =cut
@@ -66,6 +66,16 @@ use Moo;
 use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
+
+=attr C<inpod>
+
+=method C<set_inpod>
+
+=method C<clear_inpod>
+
+=method C<is_inpod>
+
+=cut
 
 has 'inpod' => (
   is        => ro  =>,
@@ -96,16 +106,40 @@ around write_command => sub {
   return $self;
 };
 
+=method write_text_outside_pod
+
+Is called when a C<text> event is seen but we don't appear to be inside a C<POD> region.
+
+    $recon->write_text_outside_pod( $orig_method, $event );
+
+Default implementation warns via C<Carp> and then emits the element anyway, via
+
+    $self->$orig_method( $event )
+
+=cut
+
 sub write_text_outside_pod {
-    my ( $self, $orig, $event ) = @_ ;
-    carp 'POD Text element outside POD ' . pp($event);
-    return $self->$orig($event);
+  my ( $self, $orig, $event ) = @_;
+  carp 'POD Text element outside POD ' . pp($event);
+  return $self->$orig($event);
 }
 
+=method write_nonpod_inside_pod
+
+Is called when a C<nonpod> event is seen but we appear to be inside a C<POD> region.
+
+    $recon->write_nonpod_inside_pod( $orig_method, $event );
+
+Default implementation warns via C<Carp> and then emits the element anyway, via
+
+    $self->$orig_method( $event )
+
+=cut
+
 sub write_nonpod_inside_pod {
-    my ( $self, $orig, $event ) = @_;
-    carp 'NONPOD element inside POD ' . pp($event);
-    return $self->$orig($event);
+  my ( $self, $orig, $event ) = @_;
+  carp 'NONPOD element inside POD ' . pp($event);
+  return $self->$orig($event);
 }
 
 around write_text => sub {
