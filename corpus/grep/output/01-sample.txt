@@ -4,7 +4,6 @@ use strict;
 use warnings;
 use utf8;
 
-=begin Foo
 
 =end Foo
 
@@ -18,7 +17,8 @@ use utf8;
 
 # or here
 
-=begin comment
+
+=pod
 
     =begin indented is a comment
 
