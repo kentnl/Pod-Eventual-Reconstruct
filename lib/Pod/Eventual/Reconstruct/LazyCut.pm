@@ -6,7 +6,7 @@ BEGIN {
   $Pod::Eventual::Reconstruct::LazyCut::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.1.1';
+  $Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.1.2';
 }
 
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
@@ -98,7 +98,7 @@ Pod::Eventual::Reconstruct::LazyCut - A Subclass of Pod::Eventual::Reconstruct t
 
 =head1 VERSION
 
-version 0.1.1
+version 0.1.2
 
 =head1 SYNOPSIS
 

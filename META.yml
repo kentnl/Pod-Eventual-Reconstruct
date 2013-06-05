@@ -8,6 +8,7 @@ build_requires:
   FindBin: 0
   Module::Build: 0.4005
   Pod::Eventual: 0
+  Test::Differences: 0
   Test::Fatal: 0
   Test::More: 0.98
 configure_requires:
@@ -22,10 +23,10 @@ name: Pod-Eventual-Reconstruct
 provides:
   Pod::Eventual::Reconstruct:
     file: lib/Pod/Eventual/Reconstruct.pm
-    version: v0.1.1
+    version: v0.1.2
   Pod::Eventual::Reconstruct::LazyCut:
     file: lib/Pod/Eventual/Reconstruct/LazyCut.pm
-    version: v0.1.1
+    version: v0.1.2
 requires:
   Carp: 0
   Data::Dump: 0
@@ -39,7 +40,7 @@ resources:
   bugtracker: https://github.com/kentfredric/Pod-Eventual-Reconstruct/issues
   homepage: https://github.com/kentfredric/Pod-Eventual-Reconstruct
   repository: https://github.com/kentfredric/Pod-Eventual-Reconstruct.git
-version: 0.1.1
+version: 0.1.2
 x_BuiltWith:
   modules:
     Carp: 1.29
@@ -56,6 +57,7 @@ x_BuiltWith:
     Pod::Eventual: 0.093330
     Test::CPAN::Changes: 0.20
     Test::CPAN::Meta: 0.23
+    Test::Differences: 0.61
     Test::Fatal: 0.010
     Test::More: 0.98
     Test::Pod: 1.48

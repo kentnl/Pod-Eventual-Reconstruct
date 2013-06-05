@@ -5,12 +5,12 @@ use Test::More;
 use FindBin;
 use Path::Tiny qw( path );
 use Test::Fatal;
+use Test::Differences qw( eq_or_diff_text );
 
 my $corpus = path($FindBin::Bin)->parent->parent->child('corpus')->child('reconstruct');
 
 use lib path($FindBin::Bin)->parent->child('lib')->stringify;
 
-use LinesMatch;
 use EventPipe;
 
 for my $file ( $corpus->children() ) {
@@ -25,9 +25,6 @@ for my $file ( $corpus->children() ) {
     'can parse and reconstruct ' . $fn
   );
 
-  LinesMatch::lines_match(
-    "$fn generated" => $output,
-    "$fn orginal"   => $content
-  );
+  eq_or_diff_text( $output, $content, "$fn reconstructed faithfully" );
 }
 done_testing;

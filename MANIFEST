@@ -26,7 +26,6 @@ t/02-lazycut/grep2.t
 t/lib/EventPipe.pm
 t/lib/EventPipe/Lazy.pm
 t/lib/EventsToList.pm
-t/lib/LinesMatch.pm
 weaver.ini
 xt/author/critic.t
 xt/release/cpan-changes.t
