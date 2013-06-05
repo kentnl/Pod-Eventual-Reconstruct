@@ -6,7 +6,7 @@ use FindBin;
 use Path::Tiny qw( path );
 use Test::Fatal;
 
-my $corpus = path($FindBin::Bin)->parent->parent->child('corpus');
+my $corpus = path($FindBin::Bin)->parent->parent->child('corpus')->child('reconstruct');
 
 use lib path($FindBin::Bin)->parent->child('lib')->stringify;
 
