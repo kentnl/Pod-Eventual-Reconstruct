@@ -18,6 +18,7 @@ use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
 
+
 has 'inpod' => (
   is        => ro  =>,
   writer    => 'set_inpod',
@@ -47,11 +48,13 @@ around write_command => sub {
   return $self;
 };
 
+
 sub write_text_outside_pod {
     my ( $self, $orig, $event ) = @_ ;
     carp 'POD Text element outside POD ' . pp($event);
     return $self->$orig($event);
 }
+
 
 sub write_nonpod_inside_pod {
     my ( $self, $orig, $event ) = @_;
@@ -126,7 +129,7 @@ However, if you simply remove the elements before the C<=cut>, the semantics cha
 
 Here, C<=cut> marks a "Start of POD" and the second C<codehere> is deemed "in the POD".
 
-This submodule attempts to keep the document "consistent" by not emitting C<=cut> unless a preceeding C<=command> is seen in the output.
+This module attempts to keep the document "consistent" by not emitting C<=cut> unless a preceding C<=command> is seen in the output.
 
 Additionally, this module will warn if elements are posted to it in ways that are likely to cause errors, for instance:
 
@@ -134,12 +137,44 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 
 =item * A POD Text element outside a POD region
 
-=item * A NonPod element inside a POD region
+=item * A Non-POD element inside a POD region
 
 =back
 
 The specific behaviour occurred when hitting these errors can be customised via subclassing,
 and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
+
+=head1 METHODS
+
+=head2 set_inpod
+
+=head2 clear_inpod
+
+=head2 is_inpod
+
+=head2 write_text_outside_pod
+
+Is called when a C<text> event is seen but we don't appear to be inside a C<POD> region.
+
+    $recon->write_text_outside_pod( $orig_method, $event );
+
+Default implementation warns via C<Carp> and then emits the element anyway, via
+
+    $self->$orig_method( $event )
+
+=head2 write_nonpod_inside_pod
+
+Is called when a C<nonpod> event is seen but we appear to be inside a C<POD> region.
+
+    $recon->write_nonpod_inside_pod( $orig_method, $event );
+
+Default implementation warns via C<Carp> and then emits the element anyway, via
+
+    $self->$orig_method( $event )
+
+=head1 ATTRIBUTES
+
+=head2 inpod
 
 =begin MetaPOD::JSON v1.0.0
 
