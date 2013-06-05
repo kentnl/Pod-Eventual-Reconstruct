@@ -14,7 +14,7 @@ use LinesMatch;
 use EventPipe;
 
 for my $file ( $corpus->children() ) {
-  my $content = $corpus->child('01-sample.pl')->slurp;
+  my $content = $file->slurp;
   my $output;
   my $fn = $file->relative($corpus)->stringify;
   is(
