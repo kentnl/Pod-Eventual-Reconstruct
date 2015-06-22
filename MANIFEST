@@ -41,6 +41,7 @@ t/lib/EventPipe.pm
 t/lib/EventPipe/Lazy.pm
 t/lib/EventsToList.pm
 weaver.ini
+x
 xt/author/critic.t
 xt/author/eol.t
 xt/release/cpan-changes.t
