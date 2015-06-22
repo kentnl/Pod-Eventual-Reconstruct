@@ -67,7 +67,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-use Moo;
+use Moo qw( extends );
 use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
