@@ -12,6 +12,10 @@ copyright_holder = Kent Fredric <kentfredric@gmail.com>
 bumpversions      = 1
 copyfiles         = LICENSE
 srcreadme         = mkdn
+toolkit           = eumm
+toolkit_hardness  = soft
+normal_form       = numify
+mantissa          = 6
 
 ; version_major     = 0
 ; version_minor     = 1

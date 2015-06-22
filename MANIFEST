@@ -2,12 +2,12 @@
 .gitignore
 .perltidyrc
 .travis.yml
-Build.PL
 Changes
 LICENSE
 MANIFEST
 META.json
 META.yml
+Makefile.PL
 README
 corpus/grep/diff/01-sample.txt.diff
 corpus/grep/input/01-sample.txt
