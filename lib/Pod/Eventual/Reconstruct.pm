@@ -2,8 +2,10 @@ use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct;
-$Pod::Eventual::Reconstruct::VERSION = '0.001003';
+
 # ABSTRACT: Construct a document from Pod::Eventual events
+
+our $VERSION = '1.000000';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -270,7 +272,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 =head1 VERSION
 
-version 0.001003
+version 1.000000
 
 =head1 SYNOPSIS
 

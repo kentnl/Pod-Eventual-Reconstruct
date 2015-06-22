@@ -19,7 +19,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Pod-Eventual-Reconstruct",
-  "dist_version" => "0.001003",
+  "dist_version" => "1.000000",
   "license" => "perl",
   "module_name" => "Pod::Eventual::Reconstruct",
   "recommends" => {

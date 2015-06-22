@@ -2,8 +2,10 @@ use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct::LazyCut;
-$Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.001003';
+
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
+
+our $VERSION = '1.000000';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -180,7 +182,7 @@ Pod::Eventual::Reconstruct::LazyCut - A Subclass of Pod::Eventual::Reconstruct t
 
 =head1 VERSION
 
-version 0.001003
+version 1.000000
 
 =head1 SYNOPSIS
 
