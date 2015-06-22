@@ -5,6 +5,8 @@ package Pod::Eventual::Reconstruct;
 $Pod::Eventual::Reconstruct::VERSION = '0.001003';
 # ABSTRACT: Construct a document from Pod::Eventual events
 
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
 
 
 
