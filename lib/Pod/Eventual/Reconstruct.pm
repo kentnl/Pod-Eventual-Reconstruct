@@ -6,7 +6,7 @@ package Pod::Eventual::Reconstruct;
 
 # ABSTRACT: Construct a document from Pod::Eventual events
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 # AUTHORITY
 
