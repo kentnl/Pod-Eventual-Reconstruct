@@ -20,7 +20,7 @@ $bundle->configure;
 
 my @stopwords = (
   qw(
-
+      reconstructor
     )
 );
 for my $var (@stopwords) {
@@ -30,6 +30,9 @@ $bundle->add_or_append_policy_field(
   'Subroutines::ProhibitCallsToUndeclaredSubs' => ( 'exempt_subs' => 'String::Formatter::str_rf' ), );
 
 #$bundle->remove_policy('ErrorHandling::RequireCarping');
+$bundle->remove_policy('ErrorHandling::RequireUseOfExceptions');
+$bundle->remove_policy('Bangs::ProhibitDebuggingModules');
+
 #$bundle->remove_policy('NamingConventions::Capitalization');
 
 my $inf = $bundle->actionlist->get_inflated;

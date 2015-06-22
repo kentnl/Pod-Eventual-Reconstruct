@@ -51,7 +51,7 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 
 =back
 
-The specific behaviour occurred when hitting these errors can be customised via sub-classing,
+The specific behavior occurred when hitting these errors can be customized via sub-classing,
 and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =cut
@@ -67,7 +67,7 @@ and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =cut
 
-use Moo;
+use Moo qw( extends has around );
 use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';

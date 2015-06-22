@@ -53,7 +53,7 @@ This module simply implements the basic layers of edge-cases to make that simple
 
 =cut
 
-use Moo;
+use Moo qw( has );
 use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
@@ -188,7 +188,7 @@ sub write_command {
     croak('write_command cant write anything but nonpod');
   }
   my $content = $event->{content};
-  if ( $content !~ qr{ ^ \s+ $ }msx ) {
+  if ( $content !~ qr{ \A \s+ \z }sx ) {
     $content = q[ ] . $content;
   }
   $self->write_handle->printf( q{=%s%s}, $event->{command}, $content );
