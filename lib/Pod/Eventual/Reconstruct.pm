@@ -2,14 +2,49 @@ use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct;
-BEGIN {
-  $Pod::Eventual::Reconstruct::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Pod::Eventual::Reconstruct::VERSION = '0.1.2';
-}
-
+$Pod::Eventual::Reconstruct::VERSION = '0.001003';
 # ABSTRACT: Construct a document from Pod::Eventual events
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19,7 +54,19 @@ use autodie qw(open close);
 use Carp qw( croak );
 
 
+
+
+
 has write_handle => ( is => ro =>, required => 1 );
+
+
+
+
+
+
+
+
+
 
 
 ## no critic (RequireArgUnpacking,RequireBriefOpen)
@@ -42,10 +89,28 @@ sub string_writer {
 ## use critic
 
 
+
+
+
+
+
+
+
+
+
 sub file_writer {
   my ( $class, $file, $mode ) = @_;
   return $class->handle_writer( path($file)->openw($mode) );
 }
+
+
+
+
+
+
+
+
+
 
 
 sub file_writer_raw {
@@ -54,16 +119,43 @@ sub file_writer_raw {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub file_writer_utf8 {
   my ( $class, $file ) = @_;
   return $class->handle_writer( path($file)->openw_utf8() );
 }
 
 
+
+
+
+
+
+
+
 sub handle_writer {
   my ( $class, $handle ) = @_;
   return $class->new( write_handle => $handle );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub write_event {
@@ -74,6 +166,15 @@ sub write_event {
   }
   return $self->$writer($event);
 }
+
+
+
+
+
+
+
+
+
 
 
 sub write_command {
@@ -94,6 +195,15 @@ sub write_command {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub write_text {
   my ( $self, $event ) = @_;
   if ( $event->{type} ne 'text' ) {
@@ -102,6 +212,15 @@ sub write_text {
   $self->write_handle->print( $event->{content} );
   return $self;
 }
+
+
+
+
+
+
+
+
+
 
 
 sub write_nonpod {
@@ -113,6 +232,15 @@ sub write_nonpod {
   return $self;
 
 }
+
+
+
+
+
+
+
+
+
 
 
 sub write_blank {
@@ -132,7 +260,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -140,7 +268,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 =head1 VERSION
 
-version 0.1.2
+version 0.001003
 
 =head1 SYNOPSIS
 
@@ -272,7 +400,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

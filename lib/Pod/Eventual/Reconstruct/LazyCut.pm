@@ -2,14 +2,63 @@ use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct::LazyCut;
-BEGIN {
-  $Pod::Eventual::Reconstruct::LazyCut::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.1.2';
-}
-
+$Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.001003';
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -17,6 +66,15 @@ use Moo;
 use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
+
+
+
+
+
+
+
+
+
 
 
 has 'inpod' => (
@@ -49,11 +107,33 @@ around write_command => sub {
 };
 
 
+
+
+
+
+
+
+
+
+
+
+
 sub write_text_outside_pod {
   my ( $self, $orig, $event ) = @_;
   carp 'POD Text element outside POD ' . pp($event);
   return $self->$orig($event);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub write_nonpod_inside_pod {
@@ -90,7 +170,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -98,7 +178,7 @@ Pod::Eventual::Reconstruct::LazyCut - A Subclass of Pod::Eventual::Reconstruct t
 
 =head1 VERSION
 
-version 0.1.2
+version 0.001003
 
 =head1 SYNOPSIS
 
@@ -192,7 +272,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
