@@ -1,6 +1,6 @@
 Release history for Pod-Eventual-Reconstruct
 
-1.000000 2013-06-05T19:09:52Z 3964569
+1.000000 2015-06-22T01:47:45Z 7eddb6e
  [00 Major]
  - Packaging changes here that may break hand-operated downstream vendors.
 
@@ -26,6 +26,9 @@ Release history for Pod-Eventual-Reconstruct
  - repository moved to kentnl org.
  - YAML tidyer
  - author = kentnl
+
+ [Misc]
+ - Whitespace realignment
 
 0.1.2 2013-06-05T19:09:26Z
  - Tests refactored to use Test::Differences
