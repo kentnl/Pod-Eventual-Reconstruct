@@ -21,38 +21,6 @@ our $VERSION = '1.000000';
 
 =cut
 
-=head1 SYNOPSIS
-
-Constructing a Document from a series of Pod::Eventual events is not hard, its just slightly nuanced,
-and there's a few small pitfalls for people who want input == output consistency.
-
-This module simply implements the basic layers of edge-cases to make that simpler.
-
-=head2 Construct the reconstructor
-
-    # Write to $string
-    my $string;
-    my $recon = Pod::Eventual::Reconstruct->string_writer( $string )
-    # or
-    my $recon = Pod::Eventual::Reconstruct->string_writer( \$string )
-    # ( both work )
-
-    # Write to $file
-    my $recon = Pod::Eventual::Reconstruct->file_writer( $file )
-
-    # Write to file in utf8 mode
-    my $recon = Pod::Eventual::Reconstruct->file_writer_utf8( $file )
-
-    # Write to filehandle
-    my $recon = Pod::Eventual::Reconstruct->handle_writer_utf8( $handle )
-
-=head2 Send Events to it
-
-    $recon->write_event( $hashref_from_pod_elemental )
-
-
-=cut
-
 use Moo qw( has );
 use Path::Tiny qw(path);
 use autodie qw(open close);
@@ -63,6 +31,8 @@ use Carp qw( croak );
 =cut
 
 has write_handle => ( is => ro =>, required => 1 );
+
+no Moo;
 
 =method string_writer
 
@@ -257,6 +227,35 @@ sub write_blank {
   return $self;
 }
 
-no Moo;
-
 1;
+
+=head1 SYNOPSIS
+
+Constructing a Document from a series of Pod::Eventual events is not hard, its just slightly nuanced,
+and there's a few small pitfalls for people who want input == output consistency.
+
+This module simply implements the basic layers of edge-cases to make that simpler.
+
+=head2 Construct the reconstructor
+
+    # Write to $string
+    my $string;
+    my $recon = Pod::Eventual::Reconstruct->string_writer( $string )
+    # or
+    my $recon = Pod::Eventual::Reconstruct->string_writer( \$string )
+    # ( both work )
+
+    # Write to $file
+    my $recon = Pod::Eventual::Reconstruct->file_writer( $file )
+
+    # Write to file in utf8 mode
+    my $recon = Pod::Eventual::Reconstruct->file_writer_utf8( $file )
+
+    # Write to filehandle
+    my $recon = Pod::Eventual::Reconstruct->handle_writer_utf8( $handle )
+
+=head2 Send Events to it
+
+    $recon->write_event( $hashref_from_pod_elemental )
+
+=cut
