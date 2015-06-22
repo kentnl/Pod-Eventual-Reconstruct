@@ -1,25 +1,47 @@
+use 5.006;
 use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct;
-BEGIN {
-  $Pod::Eventual::Reconstruct::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Pod::Eventual::Reconstruct::VERSION = '0.1.2';
-}
 
 # ABSTRACT: Construct a document from Pod::Eventual events
 
+our $VERSION = '1.000000';
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
-use Moo;
+
+
+
+
+
+
+
+
+
+
+use Moo qw( has );
 use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
 
 
+
+
+
 has write_handle => ( is => ro =>, required => 1 );
+
+no Moo;
+
+
+
+
+
+
+
+
+
 
 
 ## no critic (RequireArgUnpacking,RequireBriefOpen)
@@ -42,10 +64,28 @@ sub string_writer {
 ## use critic
 
 
+
+
+
+
+
+
+
+
+
 sub file_writer {
   my ( $class, $file, $mode ) = @_;
   return $class->handle_writer( path($file)->openw($mode) );
 }
+
+
+
+
+
+
+
+
+
 
 
 sub file_writer_raw {
@@ -54,16 +94,43 @@ sub file_writer_raw {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub file_writer_utf8 {
   my ( $class, $file ) = @_;
   return $class->handle_writer( path($file)->openw_utf8() );
 }
 
 
+
+
+
+
+
+
+
 sub handle_writer {
   my ( $class, $handle ) = @_;
   return $class->new( write_handle => $handle );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 sub write_event {
@@ -76,13 +143,22 @@ sub write_event {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub write_command {
   my ( $self, $event ) = @_;
   if ( $event->{type} ne 'command' ) {
     croak('write_command cant write anything but nonpod');
   }
   my $content = $event->{content};
-  if ( $content !~ qr{ ^ \s+ $ }msx ) {
+  if ( $content !~ qr{ \A \s+ \z }sx ) {
     $content = q[ ] . $content;
   }
   $self->write_handle->printf( q{=%s%s}, $event->{command}, $content );
@@ -94,6 +170,15 @@ sub write_command {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub write_text {
   my ( $self, $event ) = @_;
   if ( $event->{type} ne 'text' ) {
@@ -102,6 +187,15 @@ sub write_text {
   $self->write_handle->print( $event->{content} );
   return $self;
 }
+
+
+
+
+
+
+
+
+
 
 
 sub write_nonpod {
@@ -115,6 +209,15 @@ sub write_nonpod {
 }
 
 
+
+
+
+
+
+
+
+
+
 sub write_blank {
   my ( $self, $event ) = @_;
   if ( $event->{type} ne 'blank' ) {
@@ -124,15 +227,13 @@ sub write_blank {
   return $self;
 }
 
-no Moo;
-
 1;
 
 __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -140,7 +241,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 =head1 VERSION
 
-version 0.1.2
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -268,11 +369,11 @@ C<< $event->{type} >> B<MUST> be C<eq 'blank'>
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

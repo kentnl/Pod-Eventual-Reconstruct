@@ -1,121 +1,28 @@
-NAME
-    Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual
-    events
+Pod::Eventual::Reconstruct
 
-VERSION
-    version 0.1.2
 
-SYNOPSIS
-    Constructing a Document from a series of Pod::Eventual events is not
-    hard, its just slightly nuanced, and there's a few small pitfalls for
-    people who want input == output consistency.
 
-    This module simply implements the basic layers of edge-cases to make
-    that simpler.
+INSTALLATION
 
-  Construct the reconstructor
-        # Write to $string
-        my $string;
-        my $recon = Pod::Eventual::Reconstruct->string_writer( $string )
-        # or
-        my $recon = Pod::Eventual::Reconstruct->string_writer( \$string )
-        # ( both work )
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-        # Write to $file
-        my $recon = Pod::Eventual::Reconstruct->file_writer( $file )
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-        # Write to file in utf8 mode
-        my $recon = Pod::Eventual::Reconstruct->file_writer_utf8( $file )
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-        # Write to filehandle
-        my $recon = Pod::Eventual::Reconstruct->handle_writer_utf8( $handle )
-
-  Send Events to it
-        $recon->write_event( $hashref_from_pod_elemental )
-
-METHODS
-  string_writer
-    Create a reconstructor that writes to a string
-
-        my $reconstructor = ::Reconstruct->string_writer( $string )
-        my $reconstructor = ::Reconstruct->string_writer( \$string )
-
-  file_writer
-    Create a reconstructor that writes to a file
-
-        my $reconstructor = ::Reconstruct->file_writer( $file_name )
-
-    Values of "Path::Tiny" or "Path::Class" should also work as values of
-    $file_name
-
-  file_writer_raw
-    Create a reconstructor that writes to a file in raw mode
-
-        my $reconstructor = ::Reconstruct->file_writer_raw( $file_name )
-
-    Values of "Path::Tiny" or "Path::Class" should also work as values of
-    $file_name
-
-  file_writer_utf8
-    Create a reconstructor that writes to a file in "utf8" mode
-
-        my $reconstructor = ::Reconstruct->file_writer_utf8( $file_name )
-
-    Values of "Path::Tiny" or "Path::Class" should also work as values of
-    $file_name
-
-  handle_writer
-    Create a reconstructor that writes to a file handle
-
-        my $reconstructor = ::Reconstruct->handle_writer( $handle )
-
-  write_event
-    Write a "Pod::Eventual" event of any kind to the output target.
-
-        $recon->write_event( $eventhash );
-
-    Note: This is just a proxy for the other methods which delegates based
-    on the value of "$eventhash->{type}".
-
-    Unknown "type"'s will cause errors.
-
-  write_command
-    Write a "Pod::Eventual" "command" event.
-
-    "$event->{type}" MUST be "eq 'command'"
-
-        $recon->write_command({ type => 'command', ... });
-
-  write_text
-    Write a "Pod::Eventual" "text" event.
-
-    "$event->{type}" MUST be "eq 'text'"
-
-        $recon->write_text({ type => 'text', ... });
-
-  write_nonpod
-    Write a "Pod::Eventual" "nonpod" event.
-
-    "$event->{type}" MUST be "eq 'nonpod'"
-
-        $recon->write_nonpod({ type => 'nonpod', ... });
-
-  write_blank
-    Write a "Pod::Eventual" "blank" event.
-
-    "$event->{type}" MUST be "eq 'blank'"
-
-        $recon->write_blank({ type => 'blank', ... });
-
-ATTRIBUTES
-  write_handle
-AUTHOR
-    Kent Fredric <kentfredric@gmail.com>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Kent Fredric
-    <kentfredric@gmail.com>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2015 by Kent Fredric
+<kentfredric@gmail.com>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.

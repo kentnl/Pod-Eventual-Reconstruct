@@ -1,22 +1,39 @@
+use 5.006;
 use strict;
 use warnings;
 
 package Pod::Eventual::Reconstruct::LazyCut;
-BEGIN {
-  $Pod::Eventual::Reconstruct::LazyCut::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Pod::Eventual::Reconstruct::LazyCut::VERSION = '0.1.2';
-}
 
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
 
+our $VERSION = '1.000000';
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
-use Moo;
+
+
+
+
+
+
+
+
+
+
+use Moo qw( extends has around );
 use Carp qw(carp);
 use Data::Dump qw(pp);
 extends 'Pod::Eventual::Reconstruct';
+
+
+
+
+
+
+
+
+
 
 
 has 'inpod' => (
@@ -48,20 +65,6 @@ around write_command => sub {
   return $self;
 };
 
-
-sub write_text_outside_pod {
-  my ( $self, $orig, $event ) = @_;
-  carp 'POD Text element outside POD ' . pp($event);
-  return $self->$orig($event);
-}
-
-
-sub write_nonpod_inside_pod {
-  my ( $self, $orig, $event ) = @_;
-  carp 'NONPOD element inside POD ' . pp($event);
-  return $self->$orig($event);
-}
-
 around write_text => sub {
   my ( $orig, $self, $event ) = @_;
   if ( $event->{type} ne 'text' ) {
@@ -84,13 +87,51 @@ around write_nonpod => sub {
   return $self->$orig($event);
 };
 
+no Moo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub write_text_outside_pod {
+  my ( $self, $orig, $event ) = @_;
+  carp 'POD Text element outside POD ' . pp($event);
+  return $self->$orig($event);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+sub write_nonpod_inside_pod {
+  my ( $self, $orig, $event ) = @_;
+  carp 'NONPOD element inside POD ' . pp($event);
+  return $self->$orig($event);
+}
+
 1;
 
 __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -98,7 +139,7 @@ Pod::Eventual::Reconstruct::LazyCut - A Subclass of Pod::Eventual::Reconstruct t
 
 =head1 VERSION
 
-version 0.1.2
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -141,7 +182,7 @@ Additionally, this module will warn if elements are posted to it in ways that ar
 
 =back
 
-The specific behaviour occurred when hitting these errors can be customised via sub-classing,
+The specific behavior occurred when hitting these errors can be customized via sub-classing,
 and overriding L</write_text_outside_pod> and L</write_nonpod_inside_pod>
 
 =head1 METHODS
@@ -188,11 +229,11 @@ Default implementation warns via C<Carp> and then emits the element anyway, via
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
