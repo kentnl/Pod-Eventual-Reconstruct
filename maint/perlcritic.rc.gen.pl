@@ -20,7 +20,7 @@ $bundle->configure;
 
 my @stopwords = (
   qw(
-
+      reconstructor
     )
 );
 for my $var (@stopwords) {
