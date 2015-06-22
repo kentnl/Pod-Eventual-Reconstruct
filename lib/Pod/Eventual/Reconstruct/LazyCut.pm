@@ -21,52 +21,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use Moo qw( extends has around );
 use Carp qw(carp);
 use Data::Dump qw(pp);
@@ -111,6 +65,30 @@ around write_command => sub {
   return $self;
 };
 
+around write_text => sub {
+  my ( $orig, $self, $event ) = @_;
+  if ( $event->{type} ne 'text' ) {
+    return $self->$orig($event);
+  }
+  if ( not $self->is_inpod ) {
+    return $self->write_text_outside_pod( $orig, $event );
+  }
+  return $self->$orig($event);
+};
+
+around write_nonpod => sub {
+  my ( $orig, $self, $event ) = @_;
+  if ( $event->{type} ne 'nonpod' ) {
+    return $self->$orig($event);
+  }
+  if ( $self->is_inpod ) {
+    return $self->write_nonpod_inside_pod( $orig, $event );
+  }
+  return $self->$orig($event);
+};
+
+no Moo;
+
 
 
 
@@ -146,28 +124,6 @@ sub write_nonpod_inside_pod {
   carp 'NONPOD element inside POD ' . pp($event);
   return $self->$orig($event);
 }
-
-around write_text => sub {
-  my ( $orig, $self, $event ) = @_;
-  if ( $event->{type} ne 'text' ) {
-    return $self->$orig($event);
-  }
-  if ( not $self->is_inpod ) {
-    return $self->write_text_outside_pod( $orig, $event );
-  }
-  return $self->$orig($event);
-};
-
-around write_nonpod => sub {
-  my ( $orig, $self, $event ) = @_;
-  if ( $event->{type} ne 'nonpod' ) {
-    return $self->$orig($event);
-  }
-  if ( $self->is_inpod ) {
-    return $self->write_nonpod_inside_pod( $orig, $event );
-  }
-  return $self->$orig($event);
-};
 
 1;
 

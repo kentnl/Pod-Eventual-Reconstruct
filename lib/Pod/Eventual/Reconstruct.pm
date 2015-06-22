@@ -21,38 +21,6 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 use Moo qw( has );
 use Path::Tiny qw(path);
 use autodie qw(open close);
@@ -63,6 +31,8 @@ use Carp qw( croak );
 
 
 has write_handle => ( is => ro =>, required => 1 );
+
+no Moo;
 
 
 
@@ -256,8 +226,6 @@ sub write_blank {
   $self->write_handle->print( $event->{content} );
   return $self;
 }
-
-no Moo;
 
 1;
 
