@@ -1,12 +1,23 @@
 Release history for Pod-Eventual-Reconstruct
 
 1.000000 2013-06-05T19:09:52Z 3964569
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.2, see misc/*.deps* for details
+ - build: ↑1
+ - configure: +1 ↑1
+ - develop: +51 -2 (recommends: -1, suggests: +1 ↑1)
+ - runtime: ↓1 (recommends: +2)
+ - test: +4 ↑1 -2 (recommends: +1)
 
 0.1.2 2013-06-05T19:09:26Z
  - Tests refactored to use Test::Differences
 
  [Dependencies::Added / test requires]
  - Test::Differences
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.1, see misc/*.deps* for details
+ - test: +1
 
 0.1.1 2013-06-05T16:55:26Z
  [!Noteworthy Changes]
@@ -15,6 +26,9 @@ Release history for Pod-Eventual-Reconstruct
  [Dependencies::Added / runtime requires]
  - Data::Dump
 
+ [Dependencies::Stats]
+ - Dependencies changed since 0.1.0, see misc/*.deps* for details
+ - runtime: +1
+
 0.1.0 2013-06-02T09:56:48Z
  - First version.
-

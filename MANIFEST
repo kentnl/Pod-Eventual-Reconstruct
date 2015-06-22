@@ -18,6 +18,10 @@ corpus/reconstruct/01-sample.txt
 dist.ini
 lib/Pod/Eventual/Reconstruct.pm
 lib/Pod/Eventual/Reconstruct/LazyCut.pm
+misc/Changes.deps
+misc/Changes.deps.all
+misc/Changes.deps.dev
+misc/Changes.deps.opt
 misc/built_with.json
 perlcritic.rc
 t/00-compile/lib_Pod_Eventual_Reconstruct_LazyCut_pm.t
