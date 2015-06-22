@@ -1,6 +1,19 @@
 Release history for Pod-Eventual-Reconstruct
 
 1.000000 2013-06-05T19:09:52Z 3964569
+ [00 Major]
+ - Packaging changes here that may break hand-operated downstream vendors.
+
+ [01 Version Scheme]
+ - X.yyyzzz is now in use instead of x.y.z
+ - This is the primary reason for the 1.0 release.
+ - https://questhub.io/realm/perl/quest/5388d3a9bbd0be2224000129
+
+ [02 Tooling overhaul]
+ - Module::Build as installer is getting replaced with ExtUtils::MakeMaker
+ - https://questhub.io/realm/perl/quest/5388cc12bbd0be5b2500011f
+ - Dependencies are also softened in regards to latest things.
+
  [Dependencies::Stats]
  - Dependencies changed since 0.1.2, see misc/*.deps* for details
  - build: -1
@@ -8,6 +21,11 @@ Release history for Pod-Eventual-Reconstruct
  - develop: +51 -2 (recommends: +1 -1, suggests: +1 ↑1)
  - runtime: ↓1 (recommends: +2)
  - test: +4 ↓1 -2 (recommends: +3)
+
+ [Meta]
+ - repository moved to kentnl org.
+ - YAML tidyer
+ - author = kentnl
 
 0.1.2 2013-06-05T19:09:26Z
  - Tests refactored to use Test::Differences
