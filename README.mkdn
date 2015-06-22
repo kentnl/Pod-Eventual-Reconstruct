@@ -4,7 +4,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 # VERSION
 
-version 0.1.2
+version 1.000000
 
 # SYNOPSIS
 
@@ -76,7 +76,7 @@ Create a reconstructor that writes to a file handle
 
 ## write\_event
 
-Write a [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) event of any kind to the output target.
+Write a [`Pod::Eventual`](https://metacpan.org/pod/Pod::Eventual) event of any kind to the output target.
 
     $recon->write_event( $eventhash );
 
@@ -86,33 +86,33 @@ Unknown `type`'s will cause errors.
 
 ## write\_command
 
-Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `command` event.
+Write a  [`Pod::Eventual`](https://metacpan.org/pod/Pod::Eventual) `command` event.
 
-`$event->{type}` __MUST__ be `eq 'command'`
+`$event->{type}` **MUST** be `eq 'command'`
 
     $recon->write_command({ type => 'command', ... });
 
 ## write\_text
 
-Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `text` event.
+Write a  [`Pod::Eventual`](https://metacpan.org/pod/Pod::Eventual) `text` event.
 
-`$event->{type}` __MUST__ be `eq 'text'`
+`$event->{type}` **MUST** be `eq 'text'`
 
     $recon->write_text({ type => 'text', ... });
 
 ## write\_nonpod
 
-Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `nonpod` event.
+Write a  [`Pod::Eventual`](https://metacpan.org/pod/Pod::Eventual) `nonpod` event.
 
-`$event->{type}` __MUST__ be `eq 'nonpod'`
+`$event->{type}` **MUST** be `eq 'nonpod'`
 
     $recon->write_nonpod({ type => 'nonpod', ... });
 
 ## write\_blank
 
-Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `blank` event.
+Write a  [`Pod::Eventual`](https://metacpan.org/pod/Pod::Eventual) `blank` event.
 
-`$event->{type}` __MUST__ be `eq 'blank'`
+`$event->{type}` **MUST** be `eq 'blank'`
 
     $recon->write_blank({ type => 'blank', ... });
 
@@ -120,20 +120,13 @@ Write a  [`Pod::Eventual`](http://search.cpan.org/perldoc?Pod::Eventual) `blank`
 
 ## write\_handle
 
-{
-    "namespace":"Pod::Eventual::Reconstruct",
-    "inherits": "Moo::Object"
-}
-
-
-
 # AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

@@ -5,6 +5,10 @@ package Pod::Eventual::Reconstruct::LazyCut;
 
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
 
+our $VERSION = '1.000000';
+
+# AUTHORITY
+
 =head1 SYNOPSIS
 
 If you're blindly filtering POD in an Eventual manner, sometimes removing elements

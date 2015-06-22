@@ -5,6 +5,10 @@ package Pod::Eventual::Reconstruct;
 
 # ABSTRACT: Construct a document from Pod::Eventual events
 
+our $VERSION = '1.000000';
+
+# AUTHORITY
+
 =begin MetaPOD::JSON v1.0.0
 
 {
