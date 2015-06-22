@@ -31,6 +31,7 @@ $bundle->add_or_append_policy_field(
 
 #$bundle->remove_policy('ErrorHandling::RequireCarping');
 $bundle->remove_policy('ErrorHandling::RequireUseOfExceptions');
+$bundle->remove_policy('Bangs::ProhibitDebuggingModules');
 
 #$bundle->remove_policy('NamingConventions::Capitalization');
 
