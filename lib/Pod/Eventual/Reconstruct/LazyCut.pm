@@ -6,7 +6,7 @@ package Pod::Eventual::Reconstruct::LazyCut;
 
 # ABSTRACT: A Subclass of Pod::Eventual::Reconstruct that emits less =cut's
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -139,7 +139,7 @@ Pod::Eventual::Reconstruct::LazyCut - A Subclass of Pod::Eventual::Reconstruct t
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

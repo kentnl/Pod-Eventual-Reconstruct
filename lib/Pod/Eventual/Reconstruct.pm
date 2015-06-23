@@ -6,7 +6,7 @@ package Pod::Eventual::Reconstruct;
 
 # ABSTRACT: Construct a document from Pod::Eventual events
 
-our $VERSION = '1.000000';
+our $VERSION = '1.000001';
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
@@ -21,7 +21,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-use Moo qw( has );
+use Moo 1.000008 qw( has );    # builder => CODE
 use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
@@ -241,7 +241,7 @@ Pod::Eventual::Reconstruct - Construct a document from Pod::Eventual events
 
 =head1 VERSION
 
-version 1.000000
+version 1.000001
 
 =head1 SYNOPSIS
 

@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Carp" => 0,
     "Data::Dump" => 0,
-    "Moo" => 0,
+    "Moo" => "1.000008",
     "Path::Tiny" => 0,
     "autodie" => 0,
     "strict" => 0,
@@ -36,7 +36,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.89",
     "lib" => 0
   },
-  "VERSION" => "1.000000",
+  "VERSION" => "1.000001",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t t/01-reconstruct/*.t t/02-lazycut/*.t"
   }
@@ -49,7 +49,7 @@ my %FallbackPrereqs = (
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "FindBin" => 0,
-  "Moo" => 0,
+  "Moo" => "1.000008",
   "Path::Tiny" => 0,
   "Pod::Eventual" => 0,
   "Test::Differences" => 0,

@@ -1,5 +1,13 @@
 Release history for Pod-Eventual-Reconstruct
 
+1.000001 2015-06-23T02:43:46Z e238a3a
+ [BugFix]
+ - Newer Moo is mandatory
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000000, see misc/*.deps* for details
+ - runtime: ↑1 (recommends: -1)
+
 1.000000 2015-06-22T02:03:58Z 47e3e0a
  [00 Major]
  - Packaging changes here that may break hand-operated downstream vendors.

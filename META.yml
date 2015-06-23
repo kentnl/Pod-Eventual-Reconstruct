@@ -25,17 +25,16 @@ name: Pod-Eventual-Reconstruct
 provides:
   Pod::Eventual::Reconstruct:
     file: lib/Pod/Eventual/Reconstruct.pm
-    version: '1.000000'
+    version: '1.000001'
   Pod::Eventual::Reconstruct::LazyCut:
     file: lib/Pod/Eventual/Reconstruct/LazyCut.pm
-    version: '1.000000'
+    version: '1.000001'
 recommends:
-  Moo: '1.000008'
   Path::Tiny: '0.058'
 requires:
   Carp: '0'
   Data::Dump: '0'
-  Moo: '0'
+  Moo: '1.000008'
   Path::Tiny: '0'
   autodie: '0'
   perl: '5.006'
@@ -45,4 +44,4 @@ resources:
   bugtracker: https://github.com/kentnl/Pod-Eventual-Reconstruct/issues
   homepage: https://github.com/kentnl/Pod-Eventual-Reconstruct
   repository: https://github.com/kentnl/Pod-Eventual-Reconstruct.git
-version: '1.000000'
+version: '1.000001'
