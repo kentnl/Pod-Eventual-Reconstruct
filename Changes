@@ -1,5 +1,7 @@
 Release history for Pod-Eventual-Reconstruct
 
+1.000002 2015-06-23T02:45:07Z 7db093c
+
 1.000001 2015-06-23T02:43:46Z e238a3a
  [BugFix]
  - Newer Moo is mandatory
