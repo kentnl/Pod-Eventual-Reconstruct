@@ -69,7 +69,7 @@
       "Test::More" : "1.001014",
       "Test::Pod" : "1.50",
       "Test::Pod::Coverage" : "1.10",
-      "autodie" : "2.27",
+      "autodie" : "2.28",
       "lib" : "0.63",
       "strict" : "1.09",
       "warnings" : "1.32"

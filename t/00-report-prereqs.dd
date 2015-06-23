@@ -77,13 +77,12 @@ do { my $x = {
                     },
        'runtime' => {
                       'recommends' => {
-                                        'Moo' => '1.000008',
                                         'Path::Tiny' => '0.058'
                                       },
                       'requires' => {
                                       'Carp' => '0',
                                       'Data::Dump' => '0',
-                                      'Moo' => '0',
+                                      'Moo' => '1.000008',
                                       'Path::Tiny' => '0',
                                       'autodie' => '0',
                                       'perl' => '5.006',

@@ -21,7 +21,7 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 
 
-use Moo qw( has );
+use Moo 1.000008 qw( has );    # builder => CODE
 use Path::Tiny qw(path);
 use autodie qw(open close);
 use Carp qw( croak );
